@@ -1,0 +1,17 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+RUN ["npm", "run", "start"]
+
+# docker run -it -p 3000:3000 CONTAINER_ID
+# docker run -p 3000:3000 -v /app/node_modules -v ${pwd}:/app CONTAINER_ID
+# docker run -p 3000:3000 -v /app/node_modules -v /app/node_modules -v ${pwd}:/app CONTAINER_ID
+
+#   web:
+#     stdin_open: true
